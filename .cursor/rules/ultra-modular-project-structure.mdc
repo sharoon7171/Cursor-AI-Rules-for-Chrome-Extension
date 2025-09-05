@@ -1,0 +1,370 @@
+---
+description: Ultra-Modular Chrome Extension Project Structure - Every Component Separated
+globs:
+- "**/components/**"
+- "**/basic/**"  
+- "**/composite/**"
+- "**/complex/**"
+- "**/layouts/**"
+- "**/project-structure"
+- "**/architecture"
+alwaysApply: false
+priority: medium
+---
+
+# Ultra-Modular Chrome Extension Project Structure
+
+## Core Principle: Everything Separated
+- **One responsibility per file** - no mixing concerns
+- **Simple naming** - clear, descriptive file names
+- **No duplicates** - each component exists once
+- **Professional hierarchy** - logical folder organization
+- **Component hierarchy** - basic to complex component structure
+
+## Complete Project Structure
+```
+chrome-extension/
+├── manifest.json                           # Extension configuration
+├── service-worker.mjs                      # Main background worker
+│
+├── core/                                   # Core extension functionality
+│   ├── extension-manager.mjs              # Extension lifecycle
+│   ├── permission-handler.mjs             # Permission management
+│   ├── error-handler.mjs                 # Global error handling
+│   ├── config.mjs                        # Extension configuration
+│   └── constants.mjs                     # Global constants
+│
+├── components/                            # UI Component Hierarchy
+│   ├── basic/                            # Basic UI elements
+│   │   ├── button.mjs                    # Button component
+│   │   ├── input.mjs                     # Input field component
+│   │   ├── label.mjs                     # Label component
+│   │   ├── icon.mjs                      # Icon component
+│   │   ├── badge.mjs                     # Badge component
+│   │   ├── spinner.mjs                   # Loading spinner
+│   │   ├── tooltip.mjs                   # Tooltip component
+│   │   ├── toggle.mjs                    # Toggle switch
+│   │   ├── checkbox.mjs                  # Checkbox component
+│   │   ├── radio.mjs                     # Radio button
+│   │   ├── select.mjs                    # Select dropdown
+│   │   ├── text.mjs                      # Text component
+│   │   ├── link.mjs                      # Link component
+│   │   ├── image.mjs                     # Image component
+│   │   └── divider.mjs                   # Divider/separator
+│   │
+│   ├── composite/                        # Composite components
+│   │   ├── search-box.mjs                # Search input + button
+│   │   ├── form-field.mjs                # Label + input + error
+│   │   ├── button-group.mjs              # Multiple buttons
+│   │   ├── dropdown-menu.mjs             # Dropdown with items
+│   │   ├── tab-item.mjs                  # Single tab element
+│   │   ├── list-item.mjs                 # Single list item
+│   │   ├── card-header.mjs               # Card title area
+│   │   ├── card-body.mjs                 # Card content area
+│   │   ├── card-footer.mjs               # Card action area
+│   │   ├── modal-header.mjs              # Modal title area
+│   │   ├── modal-body.mjs                # Modal content area
+│   │   ├── modal-footer.mjs              # Modal button area
+│   │   ├── toolbar.mjs                   # Action toolbar
+│   │   └── breadcrumb.mjs                # Navigation breadcrumb
+│   │
+│   ├── complex/                          # Complex components
+│   │   ├── header.mjs                    # Page header
+│   │   ├── footer.mjs                    # Page footer
+│   │   ├── navigation.mjs                # Navigation menu
+│   │   ├── sidebar.mjs                   # Side panel
+│   │   ├── form.mjs                      # Complete form
+│   │   ├── table.mjs                     # Data table
+│   │   ├── list.mjs                      # Item list
+│   │   ├── grid.mjs                      # Item grid
+│   │   ├── card.mjs                      # Content card
+│   │   ├── modal.mjs                     # Modal dialog
+│   │   ├── popup-menu.mjs                # Context menu
+│   │   ├── tabs.mjs                      # Tab container
+│   │   ├── accordion.mjs                 # Collapsible sections
+│   │   ├── carousel.mjs                  # Image carousel
+│   │   └── dashboard.mjs                 # Dashboard layout
+│   │
+│   └── layouts/                          # Page layouts
+│       ├── popup-template.mjs            # Popup page template
+│       ├── options-template.mjs          # Options page template
+│       ├── content-overlay.mjs           # Content script overlay
+│       └── error-page.mjs                # Error page template
+│
+├── pages/                                # Extension pages
+│   ├── popup/
+│   │   ├── popup.html                    # Popup HTML structure
+│   │   ├── popup.mjs                     # Popup main logic
+│   │   ├── popup-controller.mjs          # Popup event handling
+│   │   ├── popup-state.mjs               # Popup state management
+│   │   └── popup.css                     # Popup styling
+│   │
+│   ├── options/
+│   │   ├── options.html                  # Options HTML structure
+│   │   ├── options.mjs                   # Options main logic
+│   │   ├── options-controller.mjs        # Options event handling
+│   │   ├── options-state.mjs             # Options state management
+│   │   └── options.css                   # Options styling
+│   │
+│   └── background/
+│       ├── background-controller.mjs     # Background event handling
+│       ├── background-state.mjs          # Background state management
+│       └── background-tasks.mjs          # Background task management
+│
+├── content-scripts/                      # Content script modules
+│   ├── content-main.mjs                  # Main content script
+│   ├── content-controller.mjs            # Content event handling
+│   ├── content-injector.mjs              # DOM injection logic
+│   ├── content-observer.mjs              # DOM change observer
+│   ├── content-extractor.mjs             # Data extraction logic
+│   ├── content-modifier.mjs              # DOM modification logic
+│   └── content-cleanup.mjs               # Cleanup operations
+│
+├── services/                             # Business logic services
+│   ├── api/                              # API communication
+│   │   ├── api-client.mjs                # Base API client
+│   │   ├── auth-api.mjs                  # Authentication API
+│   │   ├── user-api.mjs                  # User data API
+│   │   ├── settings-api.mjs              # Settings API
+│   │   ├── analytics-api.mjs             # Analytics API
+│   │   └── error-reporting-api.mjs       # Error reporting API
+│   │
+│   ├── storage/                          # Data storage services
+│   │   ├── storage-manager.mjs           # Base storage manager
+│   │   ├── sync-storage.mjs              # Chrome sync storage
+│   │   ├── local-storage.mjs             # Chrome local storage
+│   │   ├── session-storage.mjs           # Session storage
+│   │   ├── cache-manager.mjs             # Cache management
+│   │   └── data-migrator.mjs             # Data migration
+│   │
+│   ├── messaging/                        # Inter-script communication
+│   │   ├── message-router.mjs            # Message routing
+│   │   ├── background-messenger.mjs      # Background messages
+│   │   ├── content-messenger.mjs         # Content script messages
+│   │   ├── popup-messenger.mjs           # Popup messages
+│   │   └── message-validator.mjs         # Message validation
+│   │
+│   ├── security/                         # Security services
+│   │   ├── permission-manager.mjs        # Permission handling
+│   │   ├── input-validator.mjs           # Input validation
+│   │   ├── sanitizer.mjs                 # Data sanitization
+│   │   ├── encryption.mjs                # Data encryption
+│   │   ├── auth-manager.mjs              # Authentication
+│   │   └── security-logger.mjs           # Security logging
+│   │
+│   └── analytics/                        # Analytics and tracking
+│       ├── analytics-manager.mjs         # Analytics coordination
+│       ├── event-tracker.mjs             # Event tracking
+│       ├── performance-monitor.mjs       # Performance monitoring
+│       ├── error-tracker.mjs             # Error tracking
+│       └── usage-metrics.mjs             # Usage statistics
+│
+├── utils/                                # Utility functions
+│   ├── dom/                              # DOM utilities
+│   │   ├── dom-selector.mjs              # DOM element selection
+│   │   ├── dom-creator.mjs               # DOM element creation
+│   │   ├── dom-modifier.mjs              # DOM modification
+│   │   ├── dom-traverser.mjs             # DOM navigation
+│   │   ├── event-listener.mjs            # Event management
+│   │   └── style-manager.mjs             # CSS style management
+│   │
+│   ├── data/                             # Data utilities
+│   │   ├── array-helper.mjs              # Array operations
+│   │   ├── object-helper.mjs             # Object operations
+│   │   ├── string-helper.mjs             # String operations
+│   │   ├── number-helper.mjs             # Number operations
+│   │   ├── date-helper.mjs               # Date operations
+│   │   ├── url-helper.mjs                # URL operations
+│   │   ├── json-helper.mjs               # JSON operations
+│   │   └── validation-helper.mjs         # Data validation
+│   │
+│   ├── async/                            # Async utilities
+│   │   ├── debouncer.mjs                 # Debounce functions
+│   │   ├── throttler.mjs                 # Throttle functions
+│   │   ├── delay.mjs                     # Delay utility
+│   │   ├── timeout.mjs                   # Timeout utility
+│   │   ├── retry.mjs                     # Retry logic
+│   │   └── queue-manager.mjs             # Task queue
+│   │
+│   ├── browser/                          # Browser utilities
+│   │   ├── tab-manager.mjs               # Tab operations
+│   │   ├── window-manager.mjs            # Window operations
+│   │   ├── bookmark-manager.mjs          # Bookmark operations
+│   │   ├── history-manager.mjs           # History operations
+│   │   ├── cookie-manager.mjs            # Cookie operations
+│   │   └── notification-manager.mjs      # Notification operations
+│   │
+│   └── misc/                             # Miscellaneous utilities
+│       ├── logger.mjs                    # Logging utility
+│       ├── random.mjs                    # Random generators
+│       ├── hash.mjs                      # Hash functions
+│       ├── uuid.mjs                      # UUID generator
+│       ├── formatter.mjs                 # Data formatting
+│       └── converter.mjs                 # Data conversion
+│
+├── hooks/                                # Reusable logic hooks
+│   ├── use-storage.mjs                   # Storage hook
+│   ├── use-messaging.mjs                 # Messaging hook
+│   ├── use-permissions.mjs               # Permissions hook
+│   ├── use-tabs.mjs                      # Tabs hook
+│   ├── use-analytics.mjs                 # Analytics hook
+│   ├── use-theme.mjs                     # Theme hook
+│   ├── use-settings.mjs                  # Settings hook
+│   └── use-api.mjs                       # API hook
+│
+├── styles/                               # CSS modules
+│   ├── base/                             # Base styles
+│   │   ├── reset.css                     # CSS reset
+│   │   ├── variables.css                 # CSS custom properties
+│   │   ├── typography.css                # Font styles
+│   │   ├── colors.css                    # Color scheme
+│   │   └── layout.css                    # Layout utilities
+│   │
+│   ├── components/                       # Component styles
+│   │   ├── basic/                        # Basic component styles
+│   │   │   ├── button.css                # Button styles
+│   │   │   ├── input.css                 # Input styles
+│   │   │   ├── toggle.css                # Toggle styles
+│   │   │   └── badge.css                 # Badge styles
+│   │   │
+│   │   ├── composite/                    # Composite component styles
+│   │   │   ├── search-box.css            # Search box styles
+│   │   │   ├── form-field.css            # Form field styles
+│   │   │   └── button-group.css          # Button group styles
+│   │   │
+│   │   └── complex/                      # Complex component styles
+│   │       ├── header.css                # Header styles
+│   │       ├── footer.css                # Footer styles
+│   │       ├── navigation.css            # Navigation styles
+│   │       ├── form.css                  # Form styles
+│   │       └── table.css                 # Table styles
+│   │
+│   ├── pages/                            # Page-specific styles
+│   │   ├── popup-page.css                # Popup page styles
+│   │   ├── options-page.css              # Options page styles
+│   │   └── content-overlay.css           # Content overlay styles
+│   │
+│   └── themes/                           # Theme variations
+│       ├── light-theme.css               # Light theme
+│       ├── dark-theme.css                # Dark theme
+│       └── high-contrast.css             # High contrast theme
+│
+├── assets/                               # Static assets
+│   ├── icons/                            # Extension icons
+│   │   ├── icon-16.png                   # 16px icon
+│   │   ├── icon-48.png                   # 48px icon
+│   │   ├── icon-128.png                  # 128px icon
+│   │   └── icon.svg                      # Vector icon
+│   │
+│   ├── images/                           # UI images
+│   │   ├── logo.svg                      # Extension logo
+│   │   ├── placeholder.svg               # Placeholder image
+│   │   └── background.svg                # Background image
+│   │
+│   ├── fonts/                            # Custom fonts
+│   │   ├── primary-font.woff2            # Primary font
+│   │   └── icon-font.woff2               # Icon font
+│   │
+│   └── data/                             # Static data
+│       ├── countries.json                # Country list
+│       ├── languages.json                # Language list
+│       └── timezones.json                # Timezone list
+│
+├── tests/                                # Test files
+│   ├── unit/                             # Unit tests
+│   │   ├── components/                   # Component tests
+│   │   ├── services/                     # Service tests
+│   │   ├── utils/                        # Utility tests
+│   │   └── hooks/                        # Hook tests
+│   │
+│   ├── integration/                      # Integration tests
+│   │   ├── messaging.test.mjs            # Message passing tests
+│   │   ├── storage.test.mjs              # Storage tests
+│   │   └── api.test.mjs                  # API tests
+│   │
+│   ├── e2e/                              # End-to-end tests
+│   │   ├── popup.test.mjs                # Popup E2E tests
+│   │   ├── options.test.mjs              # Options E2E tests
+│   │   └── content-script.test.mjs       # Content script E2E tests
+│   │
+│   └── mocks/                            # Test mocks
+│       ├── chrome-api-mock.mjs           # Chrome API mocks
+│       ├── dom-mock.mjs                  # DOM mocks
+│       └── api-mock.mjs                  # API mocks
+│
+├── config/                               # Configuration files
+│   ├── webpack.config.mjs                # Webpack configuration
+│   ├── jest.config.mjs                   # Jest configuration
+│   ├── eslint.config.mjs                 # ESLint configuration
+│   ├── prettier.config.mjs               # Prettier configuration
+│   └── build.config.mjs                  # Build configuration
+│
+└── scripts/                              # Build and utility scripts
+    ├── build.mjs                         # Build script
+    ├── dev.mjs                           # Development script
+    ├── test.mjs                          # Test script
+    ├── package.mjs                       # Package script
+    ├── deploy.mjs                        # Deployment script
+    └── clean.mjs                         # Cleanup script
+```
+
+## File Naming Conventions
+
+### Directory Names
+- **kebab-case** - all lowercase with hyphens
+- **singular nouns** - `component` not `components` (except where plural makes sense)
+- **descriptive** - clear purpose indication
+
+### File Names
+- **kebab-case** - all lowercase with hyphens
+- **descriptive** - purpose clearly indicated
+- **consistent extensions** - `.mjs` for modules, `.css` for styles
+- **no abbreviations** - `button.mjs` not `btn.mjs`
+
+### Component Organization Rules
+1. **Component Hierarchy Principle**
+   - Basic: Fundamental UI elements (button, input, label)
+   - Composite: Simple component combinations (search-box, form-field)
+   - Complex: Advanced UI sections (header, table, form)
+   - Layouts: Page-level templates
+
+2. **Single Responsibility**
+   - Each file handles ONE component/utility/service
+   - No mixing of concerns within files
+   - Clear export/import patterns
+
+3. **Dependency Direction**
+   - Basic components depend on nothing
+   - Composite components depend on basic components
+   - Complex components depend on composite/basic components
+   - Layouts depend on complex/composite/basic components
+
+## Import/Export Pattern
+```javascript
+// ✅ Single default export per file
+// button.mjs
+export default class Button {
+  // Implementation
+}
+
+// ✅ Named exports for utilities
+// string-helper.mjs
+export const capitalize = (str) => { /* */ };
+export const slugify = (str) => { /* */ };
+export const truncate = (str, length) => { /* */ };
+
+// ✅ Clean imports
+// form.mjs
+import Button from '../basic/button.mjs';
+import Input from '../basic/input.mjs';
+import FormField from '../composite/form-field.mjs';
+```
+
+## Benefits of Ultra-Modular Structure
+- **Maintainability** - Easy to locate and modify specific functionality
+- **Reusability** - Components can be reused across different parts
+- **Testability** - Each module can be tested in isolation
+- **Scalability** - Easy to add new components without conflicts
+- **Collaboration** - Multiple developers can work without conflicts
+- **Performance** - Only load what's needed (lazy loading)
+- **Debugging** - Easy to isolate and fix issues
