@@ -52,6 +52,14 @@ priority: critical
 - **STEP VERIFICATION** - Verify which specific step user is requesting before starting
 - **TODO COMPLETION** - Mark ONLY the completed step as done, leave others unchanged
 
+### Phase 2.6: MANDATORY TODO CREATION PROTOCOL (ABSOLUTE)
+- **ALWAYS CREATE DETAILED TODOS** - When user mentions any task, create comprehensive step-by-step breakdown
+- **MICRO-STEP BREAKDOWN** - Break every task into smallest possible actionable steps (1.1, 1.2, 1.3...)
+- **EXPLICIT FILE OPERATIONS** - Specify exact files, directories, and operations for each step
+- **NO ASSUMPTIONS** - Never assume what user wants beyond what they explicitly state
+- **ASK BEFORE EXECUTION** - Always present todo breakdown and wait for user approval before starting
+- **DETAILED DESCRIPTIONS** - Each step must be crystal clear about what exactly will be done
+
 ## Professional Codebase Scanning Workflow
 
 ### Step 1: Repository Overview
@@ -107,6 +115,14 @@ find . -name "*.mjs" -o -name "*.js" -o -name "*.html" -o -name "*.css" -exec wc
 - 🚫 **ASSUMING NEXT ACTIONS** - Never predict what user wants in next steps
 - 🚫 **BYPASSING TODO STRUCTURE** - Never ignore user's organized task breakdown
 - 🚫 **PREMATURE TODO UPDATES** - Never mark steps complete before they're actually done
+
+### CRITICAL TODO CREATION VIOLATIONS (ABSOLUTELY FORBIDDEN)
+- 🚫 **VAGUE TODO ITEMS** - Never create generic steps like "create popup page" without breakdown
+- 🚫 **EXECUTING WITHOUT APPROVAL** - Never start work without user confirming the todo breakdown
+- 🚫 **ASSUMING USER INTENT** - Never guess what files, components, or features user wants
+- 🚫 **SKIPPING TODO CREATION** - Never execute tasks without first creating detailed step breakdown
+- 🚫 **GENERIC DESCRIPTIONS** - Never use unclear descriptions that don't specify exact actions
+- 🚫 **BUNDLED OPERATIONS** - Never combine multiple operations into single todo step
 
 ### CRITICAL RULE BYPASS VIOLATIONS (ABSOLUTELY FORBIDDEN)
 - 🚫 **RULE CIRCUMVENTION** - Never find ways around established rules
@@ -315,13 +331,44 @@ Agent Response:
 5. Marks Steps 1-4 as complete (VIOLATION)
 ```
 
+### ✅ CORRECT: Detailed TODO Creation Before Execution
+```
+User: "Create popup page"
+Agent Response:
+1. FIRST: Creates detailed todo breakdown:
+   - [ ] 1.1 Create pages/popup/ directory
+   - [ ] 1.2 Create pages/popup/popup.html with basic HTML5 structure
+   - [ ] 1.3 Add manifest.json entry for popup page
+   - [ ] 1.4 Create pages/popup/popup.mjs with initialization
+   - [ ] 1.5 Create pages/popup/popup.css with reset styles
+   - [ ] 1.6 Link CSS and JS files in popup.html
+
+2. ASKS: "Should I proceed with step 1.1, or do you want to modify this breakdown?"
+3. WAITS for user approval before executing anything
+4. ONLY executes step 1.1 when user confirms
+```
+
+### ❌ INCORRECT: Vague TODO Creation
+```
+User: "Create popup page"
+Agent Response:
+1. Creates generic todo:
+   - [ ] Create popup page
+   - [ ] Add components
+   - [ ] Add styling
+2. Immediately starts execution without approval
+3. Makes assumptions about what user wants
+```
+
 ## Error Prevention Protocol
 
 ### Before Starting ANY Work
 1. **STATE ANALYSIS FINDINGS** - summarize codebase scan results
-2. **CONFIRM DELIVERABLES** - explicitly list what will be created
-3. **ASK FOR CLARIFICATION** - if anything is ambiguous
-4. **WAIT FOR CONFIRMATION** - before proceeding
+2. **CREATE DETAILED TODO BREAKDOWN** - break task into micro-steps with exact file operations
+3. **PRESENT TODO TO USER** - show complete step-by-step breakdown
+4. **ASK FOR APPROVAL** - "Should I proceed with step X.X, or modify this breakdown?"
+5. **WAIT FOR USER CONFIRMATION** - never start without explicit approval
+6. **EXECUTE ONLY APPROVED STEP** - do only the single step user confirms
 
 ### Quality Assurance Checks
 - **Completeness**: Did I create everything requested?
@@ -342,6 +389,14 @@ Agent Response:
 - **NO AUTO-COMPLETION**: Did I avoid doing subsequent steps automatically?
 - **TASK LIST INTEGRITY**: Did I preserve the structure of user's todo list?
 - **WAIT STATE**: Am I properly waiting for next instruction before continuing?
+
+### TODO CREATION VERIFICATION
+- **DETAILED BREAKDOWN CREATED**: Did I break the task into micro-steps (1.1, 1.2, 1.3...)?
+- **EXPLICIT FILE OPERATIONS**: Did I specify exact files, directories, and operations?
+- **USER APPROVAL REQUESTED**: Did I ask for confirmation before executing?
+- **NO ASSUMPTIONS MADE**: Did I avoid guessing what user wants beyond their words?
+- **CLEAR DESCRIPTIONS**: Is each step crystal clear about what will be done?
+- **SINGLE OPERATION PER STEP**: Did I avoid bundling multiple operations?
 
 ## Integration with Project Rules
 
@@ -372,6 +427,9 @@ Agent Response:
 - [ ] **SECURITY COMPLIANCE** - @security-permissions-standards respected
 - [ ] **TODO INTEGRITY** - User's task list structure preserved
 - [ ] **NO FEATURE CREEP** - Only requested functionality implemented
+- [ ] **DETAILED TODO CREATED** - Task broken into micro-steps with exact operations
+- [ ] **USER APPROVAL OBTAINED** - Confirmation received before execution
+- [ ] **NO ASSUMPTIONS** - Nothing guessed beyond user's explicit words
 
 ### Enforcement Actions
 - **REJECT RULE VIOLATIONS** - Refuse to proceed if rules would be broken
@@ -384,3 +442,5 @@ Agent Response:
 - Instructions would break ultra-modular structure
 - Request would compromise security standards
 - Todo step boundaries would be exceeded
+- Task execution attempted without detailed todo breakdown
+- Execution started without user approval of todo steps
