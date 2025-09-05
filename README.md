@@ -6,7 +6,7 @@ Professional, organized Chrome extension development rules using latest web stan
 
 ### Using Git (Recommended)
 ```bash
-git clone --depth 1 --filter=blob:none --sparse https://github.com/YOUR_USERNAME/cursor-ai-rules-chrome-extension.git temp && cd temp && git sparse-checkout set .cursor && cp -r .cursor ../. && cd .. && rm -rf temp
+git clone --depth 1 --filter=blob:none --sparse https://github.com/sharoon7171/Cursor-AI-Rules-for-Chrome-Extension.git temp && cd temp && git sparse-checkout set .cursor && cp -r .cursor ../. && cd .. && rm -rf temp
 ```
 
 ### Manual Installation
