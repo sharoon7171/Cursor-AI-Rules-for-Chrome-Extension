@@ -2,7 +2,7 @@
 description: Chrome Extension Development - Manifest V3, Modern JavaScript, Latest Standards
 globs:
 alwaysApply: true
-priority: high
+priority: critical
 ---
 
 # Chrome Extension Development Rules - Professional Standards

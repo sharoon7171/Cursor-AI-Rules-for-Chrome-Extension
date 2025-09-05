@@ -8,8 +8,8 @@ globs:
 - "**/layouts/**"
 - "**/project-structure"
 - "**/architecture"
-alwaysApply: false
-priority: medium
+alwaysApply: true
+priority: critical
 ---
 
 # Ultra-Modular Chrome Extension Project Structure

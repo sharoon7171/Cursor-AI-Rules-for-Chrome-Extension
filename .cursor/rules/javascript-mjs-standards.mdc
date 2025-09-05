@@ -4,8 +4,8 @@ globs:
 - "**/*.mjs"
 - "**/*.js"
 - "**/service-worker.*"
-alwaysApply: false
-priority: high
+alwaysApply: true
+priority: critical
 ---
 
 # Modern JavaScript/MJS Standards for Chrome Extensions
